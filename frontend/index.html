@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maze Pathfinder — лаборатория маршрутов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">⌖</span>
+    <div>
+      <h1>Maze Pathfinder</h1>
+      <p class="subtitle">чертёжная лаборатория алгоритмов поиска пути</p>
+    </div>
+  </div>
+  <div class="legend">
+    <span class="legend-item"><i class="swatch swatch-empty"></i>клетка</span>
+    <span class="legend-item"><i class="swatch swatch-wall"></i>стена</span>
+    <span class="legend-item"><i class="swatch swatch-mud"></i>грязь ×5</span>
+    <span class="legend-item"><i class="swatch swatch-start"></i>старт</span>
+    <span class="legend-item"><i class="swatch swatch-end"></i>финиш</span>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="panel maze-panel">
+    <div class="toolbar">
+      <div class="field">
+        <label for="algoSelect">Алгоритм</label>
+        <select id="algoSelect">
+          <option value="bfs">BFS — обход по шагам</option>
+          <option value="dijkstra">Dijkstra — учитывает стоимость</option>
+          <option value="astar">A* — с эвристикой</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="drawMode">Кисть</label>
+        <select id="drawMode">
+          <option value="wall">Стена</option>
+          <option value="mud">Грязь</option>
+          <option value="empty">Ластик</option>
+        </select>
+      </div>
+
+      <button id="runBtn" class="btn btn-primary">▶ Запустить</button>
+      <button id="newMazeBtn" class="btn">⟲ Новый лабиринт</button>
+      <button id="saveMazeBtn" class="btn">💾 Сохранить мою карту</button>
+    </div>
+
+    <div id="mazeGrid" class="maze-grid" aria-label="Сетка лабиринта"></div>
+
+    <div id="runInfo" class="run-info" hidden>
+      <span id="runStats"></span>
+      <div class="submit-row">
+        <input id="playerName" type="text" maxlength="24" placeholder="Имя для таблицы лидеров" />
+        <button id="submitScoreBtn" class="btn btn-accent">Записать результат</button>
+      </div>
+    </div>
+    <p id="statusLine" class="status-line"></p>
+  </section>
+
+  <aside class="panel side-panel">
+    <h2>Таблица лидеров</h2>
+    <p class="hint">Меньше осмотренных клеток = выше в рейтинге. При равенстве — дешевле путь.</p>
+    <ol id="leaderboardList" class="leaderboard"></ol>
+  </aside>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

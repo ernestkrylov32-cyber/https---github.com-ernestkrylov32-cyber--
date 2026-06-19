@@ -1,0 +1,12 @@
+{
+  "name": "maze-pathfinder",
+  "version": "1.0.0",
+  "description": "Олимпиадный проект: визуализатор поиска пути (frontend + backend + core)",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
